@@ -1,0 +1,39 @@
+{
+  "name": "bicodit-api",
+  "version": "1.0.0",
+  "description": "bicodit app official api",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -s -D -d dist",
+    "start": "npm run build && node dist/index.js"
+  },
+  "author": "Dimitri Nazarov",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "mkdirp": "^0.5.1",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.3",
+    "sharp": "^0.23.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "express-jwt": "^5.3.1",
+    "fs": "0.0.1-security",
+    "gm": "^1.23.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
+    "passport-local-mongoose": "^5.0.1",
+    "path": "^0.12.7"
+  }
+}
