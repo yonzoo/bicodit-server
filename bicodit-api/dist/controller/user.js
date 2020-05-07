@@ -199,7 +199,7 @@ var _default = function _default(_ref) {
       }
 
       res.status(200).json({
-        id: userData.id,
+        userId: userData.id,
         login: userData.account.username,
         email: userData.account.email,
         name: userData.name,

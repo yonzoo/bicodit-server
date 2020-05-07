@@ -4,6 +4,7 @@ import middleware from '../middleware';
 import initalizeDb from '../db';
 import user from '../controller/user';
 import account from '../controller/account';
+import rating from '../controller/rating';
 
 let router = express();
 
@@ -15,6 +16,7 @@ initalizeDb(db => {
 
   router.use('/account', account({ config, db }))
   router.use('/user', user({ config, db }))
+  router.use('/rating', rating({ config, db }))
 });
 
 export default router;

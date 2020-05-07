@@ -17,6 +17,8 @@ var _user = _interopRequireDefault(require("../controller/user"));
 
 var _account = _interopRequireDefault(require("../controller/account"));
 
+var _rating = _interopRequireDefault(require("../controller/rating"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var router = (0, _express["default"])(); //connect to db
@@ -32,6 +34,10 @@ var router = (0, _express["default"])(); //connect to db
     db: db
   }));
   router.use('/user', (0, _user["default"])({
+    config: _config["default"],
+    db: db
+  }));
+  router.use('/rating', (0, _rating["default"])({
     config: _config["default"],
     db: db
   }));

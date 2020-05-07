@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import expressJwt from 'express-jwt';
+import jwtDecode from 'jwt-decode';
 
 const TOKENTIME = 60*60*24*90;
 const SECRET = "Obee1UrMyOnlyH0pe";
@@ -18,13 +19,27 @@ let generateAccessToken = (req, res, next) => {
 
 let respond = (req, res) => {
   res.status(200).json({
-    account: req.user.id,
     token: req.token
+  });
+}
+
+let respondWithData = (req, res) => {
+  res.status(200).json({
+    token: req.token,
+    userData: {
+      id: req.id,
+      email: req.email,
+      login: req.login,
+      avatar: req.avatar || "rabbodefault",
+      profileName: req.name || "",
+      profileInfo: req.about || ""
+    }
   });
 }
 
 module.exports = {
   authenticate,
   generateAccessToken,
-  respond
+  respond,
+  respondWithData
 }

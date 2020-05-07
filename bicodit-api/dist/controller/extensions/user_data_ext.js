@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
+var _jwtDecode = _interopRequireDefault(require("jwt-decode"));
+
 var _account = _interopRequireDefault(require("../../models/account"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -25,11 +27,28 @@ function () {
   }
 
   _createClass(UserDataExt, null, [{
+    key: "findUserByToken",
+    value: function findUserByToken(token, callback) {
+      if (token) {
+        var id = (0, _jwtDecode["default"])(token).id;
+
+        _account["default"].findById(id).populate('account').exec(function (err, userData) {
+          if (err) {
+            return callback(err, null);
+          } else {
+            return callback(null, userData);
+          }
+        });
+      } else {
+        return callback("No token was provided", null);
+      }
+    }
+  }, {
     key: "findUserByEmail",
     value: function findUserByEmail(email, callback) {
       _account["default"].findOne({
         'email': email
-      }, function (err, userData) {
+      }).populate('account').exec(function (err, userData) {
         if (err) {
           return callback(err, null);
         } else {
@@ -41,8 +60,8 @@ function () {
     key: "findUserByLogin",
     value: function findUserByLogin(login, callback) {
       _account["default"].findOne({
-        'login': login
-      }, function (err, userData) {
+        'username': login
+      }).populate('account').exec(function (err, userData) {
         if (err) {
           return callback(err, null);
         } else {

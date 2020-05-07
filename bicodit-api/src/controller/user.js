@@ -140,7 +140,7 @@ export default ({ config, db }) => {
               return res.status(404).json({ message: "User not found" });
             }
             res.status(200).json({
-              id: userData.id,
+              userId: userData.id,
               login: userData.account.username,
               email: userData.account.email,
               name: userData.name,
